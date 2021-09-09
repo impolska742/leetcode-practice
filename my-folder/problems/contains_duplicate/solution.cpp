@@ -1,13 +1,13 @@
 class Solution {
 public:
-    bool containsDuplicate(vector<int>& arr) {
-        int n = arr.size();
-        unordered_set<int> set;
-        
-        for(int i = 0; i < n; i++) {
-            if(set.count(arr[i])) return true;
-            set.insert(arr[i]);
+    bool containsDuplicate(vector<int>& nums) {
+        unordered_map<int, int> umap;
+        for(auto it : nums) {
+            umap[it]++;
+            
+            if(umap[it] > 1) return true;
         }
+        
         return false;
     }
 };
