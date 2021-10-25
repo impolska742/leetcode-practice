@@ -1,22 +1,26 @@
 class Solution {
 public:
     vector<int> intersection(vector<int>& nums1, vector<int>& nums2) {
-        unordered_map<int, int> umap;
-        set<int> answer;
-        vector<int> answer1;
+        sort(nums1.begin(), nums1.end());
+        sort(nums2.begin(), nums2.end());
         
-        for(auto it : nums1) {
-            umap[it]++;
+        vector<int> answer;
+        set<int> ans;
+        int i = 0, j = 0;
+        
+        while(i <= nums1.size() - 1 and j <= nums2.size() - 1) {
+            if(nums1[i] == nums2[j]) {
+                ans.insert(nums1[i]);
+                i++, j++;
+            } 
+            else if(nums1[i] < nums2[j]) i++;
+            else j++;
         }
         
-        for(auto it : nums2) {
-            if(umap[it] > 0) answer.insert(it);    
-        }   
-        
-        for(auto it : answer) {
-            answer1.push_back(it);
+        for(auto it : ans) {
+            answer.push_back(it);
         }
         
-        return answer1;
+        return answer;
     }
 };
