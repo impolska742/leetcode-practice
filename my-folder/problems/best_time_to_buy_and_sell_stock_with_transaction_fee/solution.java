@@ -4,11 +4,11 @@ class Solution {
         int ssp = 0;
         
         for(int i = 1; i < prices.length; i++) {
-            int nbsp = ssp - prices[i];
-            int nssp = prices[i] + bsp - fee;
+            int nbsp = Math.max(bsp, ssp - prices[i]);
+            int nssp = Math.max(ssp, prices[i] + bsp - fee);
             
-            bsp = Math.max(bsp, nbsp);
-            ssp = Math.max(ssp, nssp);
+            bsp = nbsp;
+            ssp = nssp;
         }
         
         return ssp;
