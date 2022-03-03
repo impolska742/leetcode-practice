@@ -5,7 +5,6 @@ class Solution:
             for num in nums:
                 cnt += (num + m - 1) // m
             
-            print(m, cnt)
             return cnt <= threshold
         
         l = 1
