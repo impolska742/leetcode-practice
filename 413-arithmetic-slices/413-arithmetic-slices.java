@@ -1,7 +1,7 @@
 class Solution {
     public int numberOfArithmeticSlices(int[] nums) {
         int n = nums.length;
-        int[] dp = new int[n];
+        int dp = 0;
         int res = 0;
         
         for(int i = 1; i < n - 1; i++) {
@@ -10,8 +10,10 @@ class Solution {
             int next = nums[i + 1];
             
             if(curr - prev == next - curr) {
-                dp[i] = dp[i - 1] + 1;
-                res += dp[i];
+                dp += 1;
+                res += dp;
+            } else {
+                dp = 0;
             }
         }
         
